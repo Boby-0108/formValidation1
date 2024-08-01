@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Events</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        a {
+            font-size: 20px;
+            color: blue;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://www.example.com" id="myLink">Link</a>
+
+    <script>
+        $(document).ready(function() {
+            $('#myLink').on('click', function(e) {
+                alert('Link clicked!');
+                // e.preventDefault(); // Uncomment this to prevent the link from opening
+            });
+
+            $('#myLink').on('mouseover', function() {
+                alert('Mouse is over the link!');
+            });
+
+            $('#myLink').on('mouseout', function() {
+                alert('Mouse is out of the link!');
+            });
+
+            $('#myLink').on('focus', function() {
+                alert('Link has focus!');
+            });
+
+            $('#myLink').on('blur', function() {
+                alert('Link lost focus!');
+            });
+
+            $('#myLink').on('mouseenter', function() {
+                alert('Mouse entered the link!');
+            });
+
+            $('#myLink').on('mouseleave', function() {
+                alert('Mouse left the link!');
+            });
+        });
+    </script>
+</body>
+</html>
