@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+// script.js
+$(document).ready(function() {
+    function setupCheckboxGroup(parentSelector, childSelector) {
+        const $parentCheckbox = $(parentSelector);
+        const $childCheckboxes = $(childSelector);
+
+        function updateParentCheckbox() {
+            const anyChecked = $childCheckboxes.is(':checked');
+            $parentCheckbox.prop('checked', anyChecked);
+        }
+        $parentCheckbox.change(function() {
+            const isChecked = $(this).is(':checked');
+            $childCheckboxes.prop('checked', isChecked);
+        });
+        $childCheckboxes.change(function() {
+            updateParentCheckbox();
+        });
+        updateParentCheckbox();
+    }
+
+    setupCheckboxGroup('#parentCheckbox1', '.childCheckbox1');
+    setupCheckboxGroup('#parentCheckbox2', '.childCheckbox2');
+});
+
+    </script>
+</head>
+<body>
+
+    <input type="checkbox" id="parentCheckbox1"> Colour
+
+    <ol class="a">
+    <li><input type="checkbox" class="childCheckbox1"> Green<br></li>
+    <li><input type="checkbox" class="childCheckbox1"> Red<br></li>
+    <li><input type="checkbox" class="childCheckbox1"> Yellow<br></li>
+    </ol> 
+
+   
+    <input type="checkbox" id="parentCheckbox2"> Language
+
+    
+    <ol class="A">
+        <li><input type="checkbox" class="childCheckbox2"> Java<br></li>
+        <li><input type="checkbox" class="childCheckbox2"> Python<br></li>
+        <li><input type="checkbox" class="childCheckbox2"> Javascript<br></li>
+        </ol> 
+    
+</body>
+</html>
